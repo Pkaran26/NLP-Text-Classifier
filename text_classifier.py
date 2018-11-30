@@ -12,12 +12,10 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import confusion_matrix
 
 
-#Method 1
 #importing dataset
-reviews = load_files('txt_sentoken/');
+reviews = load_files('txt_sentoken/')
 X,y = reviews.data, reviews.target
 
-#Method 2
 #Storing as pickle Files
 with open('X.pickle', 'wb') as f:
     pickle.dump(X,f)
@@ -35,7 +33,7 @@ with open('y.pickle', 'rb') as f:
 #Preprocessing
 #Creating the corpus(list of doc)
 corpus = []
-for i range(0, len(X)):
+for i in range(0, len(X)):
     review = re.sub(r'\W', ' ', str(X[i]))
     review = review.lower()
     review = re.sub(r'\s+[a-z]\s+', ' ', review)
@@ -84,8 +82,10 @@ cm = confusion_matrix(sent_test, sent_pred)
 
 #Saving Classifier Model
 with open('classifier.pickle', 'wb') as f:
-    pickle.dumb(classifier,f)
+    pickle.dump(classifier,f)
 
 #Saving the vectorizer
 with open('tfidfmodel.pickle', 'wb') as f:
-    pickle.dumb(vectorizer,f)
+    pickle.dump(vectorizer,f)
+d = (cm[0][0] + cm[1][1])/4
+print(d)

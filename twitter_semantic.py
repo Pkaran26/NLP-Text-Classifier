@@ -96,7 +96,7 @@ import numpy as np
 objects = ['Positive', 'Negative']
 y_pos = np.arange(len(objects))
 
-plt,bar(y_pos, [total_pos, total_neg], alpha=0.5)
+plt.bar(y_pos, [total_pos, total_neg], alpha=0.5)
 plt.xticks(y_pos, objects)
 plt.ylabel('Number')
 plt.title('Number of Positive and Negative Tweets')
